@@ -1,0 +1,2 @@
+# --max-arg-length: on Windows cmd refuses command lines over 8191 characters; 6000 leaves room for quoting.
+npx lint-staged --max-arg-length 6000

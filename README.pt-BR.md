@@ -1,0 +1,112 @@
+# nestjs-drizzle-clean-architecture
+
+[![CI](https://github.com/YuriLRodrigues/nestjs-drizzle-clean-architecture/actions/workflows/ci.yml/badge.svg)](https://github.com/YuriLRodrigues/nestjs-drizzle-clean-architecture/actions/workflows/ci.yml)
+![Node](https://img.shields.io/badge/node-%3E%3D24-339933)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+> 🇺🇸 [Read in English](./README.md)
+
+Template de backend **NestJS + Drizzle ORM** com Clean Architecture e os blocos do DDD, lint que garante as camadas,
+git hooks, testes e2e contra um Postgres de verdade e **skills do Claude Code** que conhecem os padrões.
+
+Vem com dois contextos de exemplo que rodam de verdade: **identity** (cadastro, login com JWT, papéis) e **tasks**
+(CRUD, busca paginada, regra de dono, um evento de domínio). Mantenha, adapte ou apague.
+
+## O que vem pronto
+
+- **Camadas**: `core` → `domain` → `infra` / `presentations`, com a regra de dependência **garantida pelo ESLint**: o
+  domínio não importa Drizzle, o JWT do Nest nem a camada HTTP, e um use case não importa outro.
+- **Use case devolve `Either`** e nunca lança exceção por regra de negócio. Todo erro tem um `code` estável
+  (`TASK.NOT_FOUND`) e uma resposta só: `{ statusCode, code, message, details? }`.
+- **Classe abstrata como token de DI**: o use case pede `TasksRepository`; a infra liga a implementação Drizzle e os
+  testes usam a in-memory.
+- **Entidades, value objects, agregados e eventos de domínio** sem framework dentro.
+- **Auth**: guard JWT global (`@Public()` para liberar), `@Roles('ADMIN')`, `@CurrentActor()`.
+- **Drizzle ORM 1.0** com migrations geradas e um migrator para produção.
+- **Testes em três camadas**: unit (`*.unit.spec.ts`), integration com repositórios in-memory
+  (`*.integration.spec.ts`) e e2e por HTTP contra Postgres, **sem precisar de Docker** (PGlite).
+- **Qualidade**: ESLint (com tipos) + Prettier, husky (`pre-commit` roda o lint-staged e os testes relacionados,
+  `commit-msg` roda o commitlint) e CI no GitHub Actions.
+- **Swagger** em `/docs`, health check em `/health`, env validado com zod e Dockerfile multi-stage.
+- **Pronto para o Claude Code**: `CLAUDE.md` e skills para criar módulo, use case e migration, e para revisar um diff
+  contra os padrões.
+
+## Como rodar
+
+Precisa de Node 24+ e de Docker (ou qualquer Postgres) para subir a API.
+
+```bash
+npm install
+cp .env.example .env
+docker compose up -d
+npm run db:migrate
+npm run start:dev
+```
+
+Abra <http://localhost:3333/docs>, chame `POST /auth/sign-up` e depois `POST /auth/sign-in`, e clique em **Authorize**
+com o `accessToken`.
+
+Os testes e2e **não** precisam de Docker: sem `DATABASE_URL`, eles sobem o PGlite (Postgres em WASM) no próprio
+processo.
+
+## Scripts
+
+| Script                                 | O que faz                                                         |
+| -------------------------------------- | ----------------------------------------------------------------- |
+| `npm run start:dev`                    | Sobe a API em modo watch                                          |
+| `npm run build` / `npm run start:prod` | Compila em `dist/` / roda o compilado                             |
+| `npm test`                             | Testes unit e integration                                         |
+| `npm run test:e2e`                     | E2E por HTTP (usa `DATABASE_URL` se houver, senão PGlite)         |
+| `npm run test:cov`                     | Unit e integration com cobertura                                  |
+| `npm run lint` / `npm run lint:check`  | ESLint com / sem `--fix`                                          |
+| `npm run typecheck`                    | `tsc --noEmit`                                                    |
+| `npm run db:generate`                  | Gera a migration a partir do schema (nunca escreva uma à mão)     |
+| `npm run db:migrate`                   | Aplica as migrations pendentes (drizzle-kit, desenvolvimento)     |
+| `npm run db:migrate:prod`              | Aplica as pendentes com o migrator compilado (imagem de produção) |
+| `npm run db:studio`                    | Abre o Drizzle Studio                                             |
+
+## As regras que importam
+
+1. Use case devolve `Either<DomainError, T>` e nunca lança por regra de negócio.
+2. Controller tem três linhas úteis: chamar o use case, lançar no `isLeft()` e mapear o view model.
+3. O repositório abstrato é o token de DI: classe abstrata no `domain`, `useClass` na `infra`, in-memory no teste.
+4. Entidade nunca sai crua pelo HTTP: sempre um view model no meio.
+5. Todo erro de negócio é um `DomainError` com `code` estável.
+6. Um arquivo, uma responsabilidade: um use case, um controller por endpoint, uma tabela por arquivo de schema.
+7. O teste nasce junto com o código, com repositório in-memory e factory `make*`, sem módulo do Nest.
+
+A estrutura de pastas, o fluxo de uma requisição e a tabela de rotas estão no [README em inglês](./README.md). Os
+detalhes, com exemplos, ficam em [`docs/architecture.md`](./docs/architecture.md) e [`docs/patterns/`](./docs/patterns).
+
+## Claude Code
+
+O `CLAUDE.md` descreve a arquitetura e as convenções, e `.claude/skills/` traz as skills do projeto:
+
+| Skill            | Para que serve                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `new-module`     | Criar um contexto inteiro (entidade, repositório, use cases, Drizzle, HTTP e testes) |
+| `new-use-case`   | Criar um use case com spec, controller, DTOs, view model e Swagger                   |
+| `new-migration`  | Mudar o schema do Drizzle e gerar a migration                                        |
+| `pattern-review` | Revisar um diff contra as regras acima                                               |
+
+O `skills-lock.json` também fixa a skill da comunidade
+[`nestjs-best-practices`](https://github.com/Kadajett/agent-nestjs-skills), de terceiros e sem cópia aqui. Para
+instalar: `npx skills add Kadajett/agent-nestjs-skills`.
+
+## Usando como template
+
+1. Clique em **Use this template** no GitHub (ou clone) e troque o nome no `package.json`.
+2. Mantenha o `identity` se precisar de contas. Apague o `tasks` (domínio, mappers, repositórios e schema da infra,
+   controllers e testes) ou use-o de modelo para o seu primeiro contexto.
+3. Mude o schema e rode `npm run db:generate` para criar a sua primeira migration.
+4. Rode `/new-module` no Claude Code para cada contexto novo.
+
+## Fora do escopo (bons próximos passos)
+
+Refresh token, recuperação de senha, e-mail, upload, cache, filas e logger estruturado ficaram de fora de propósito,
+porque cada projeto escolhe o seu provedor. Com as camadas, cada um vira um adapter na `infra` atrás de uma classe
+abstrata no `domain`.
+
+## Licença
+
+[MIT](./LICENSE)
