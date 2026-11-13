@@ -4,36 +4,36 @@
 ![Node](https://img.shields.io/badge/node-%3E%3D24-339933)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-> 🇧🇷 [Leia em português](./README.pt-BR.md)
+> 🇺🇸 [Read in English](./README.en.md)
 
-A **NestJS + Drizzle ORM** backend template with Clean Architecture and DDD building blocks, strict lint that enforces
-the layers, git hooks, end-to-end tests against a real Postgres and **Claude Code skills** that know the patterns.
+Template de backend **NestJS + Drizzle ORM** com Clean Architecture e os blocos do DDD, lint que garante as camadas,
+git hooks, testes e2e contra um Postgres de verdade e **skills do Claude Code** que conhecem os padrões.
 
-It ships two bounded contexts as executable examples: **identity** (sign-up, sign-in with JWT, roles) and **tasks**
-(CRUD, paginated search, ownership rules, a domain event). Keep them, adapt them or delete them.
+Vem com dois contextos de exemplo que rodam de verdade: **identity** (cadastro, login com JWT, papéis) e **tasks**
+(CRUD, busca paginada, regra de dono, um evento de domínio). Mantenha, adapte ou apague.
 
-## Features
+## O que vem pronto
 
-- **Layered architecture**: `core` → `domain` → `infra` / `presentations`, with the dependency rule **enforced by
-  ESLint**: the domain cannot import Drizzle, Nest JWT or the HTTP layer, and a use case cannot import another one.
-- **Use cases return `Either`**, never throw for business rules. Every error has a stable `code` (`TASK.NOT_FOUND`)
-  and one response shape: `{ statusCode, code, message, details? }`.
-- **Abstract classes as DI tokens**: the use case asks for `TasksRepository`; infra binds the Drizzle implementation,
-  tests use the in-memory one.
-- **Entities, value objects, aggregates and domain events** with no framework inside.
-- **Auth**: global JWT guard (`@Public()` to opt out), `@Roles('ADMIN')`, `@CurrentActor()`.
-- **Drizzle ORM 1.0** with generated migrations and a programmatic migrator for production.
-- **Tests in three layers**: unit (`*.unit.spec.ts`), integration with in-memory repositories
-  (`*.integration.spec.ts`) and e2e over HTTP against Postgres, with **no Docker required** (PGlite).
-- **Quality gates**: ESLint (type-checked) + Prettier, husky (`pre-commit` runs lint-staged and related tests,
-  `commit-msg` runs commitlint), GitHub Actions CI.
-- **Swagger** at `/docs`, health check at `/health`, zod-validated environment, multi-stage Dockerfile.
-- **Claude Code ready**: `CLAUDE.md` plus skills to scaffold a module, a use case, a migration and to review a diff
-  against the patterns.
+- **Camadas**: `core` → `domain` → `infra` / `presentations`, com a regra de dependência **garantida pelo ESLint**: o
+  domínio não importa Drizzle, o JWT do Nest nem a camada HTTP, e um use case não importa outro.
+- **Use case devolve `Either`** e nunca lança exceção por regra de negócio. Todo erro tem um `code` estável
+  (`TASK.NOT_FOUND`) e uma resposta só: `{ statusCode, code, message, details? }`.
+- **Classe abstrata como token de DI**: o use case pede `TasksRepository`; a infra liga a implementação Drizzle e os
+  testes usam a in-memory.
+- **Entidades, value objects, agregados e eventos de domínio** sem framework dentro.
+- **Auth**: guard JWT global (`@Public()` para liberar), `@Roles('ADMIN')`, `@CurrentActor()`.
+- **Drizzle ORM 1.0** com migrations geradas e um migrator para produção.
+- **Testes em três camadas**: unit (`*.unit.spec.ts`), integration com repositórios in-memory
+  (`*.integration.spec.ts`) e e2e por HTTP contra Postgres, **sem precisar de Docker** (PGlite).
+- **Qualidade**: ESLint (com tipos) + Prettier, husky (`pre-commit` roda o lint-staged e os testes relacionados,
+  `commit-msg` roda o commitlint) e CI no GitHub Actions.
+- **Swagger** em `/docs`, health check em `/health`, env validado com zod e Dockerfile multi-stage.
+- **Pronto para o Claude Code**: `CLAUDE.md` e skills para criar módulo, use case e migration, e para revisar um diff
+  contra os padrões.
 
-## Quick start
+## Como rodar
 
-Requirements: Node 24+, and Docker (or any Postgres) to run the app.
+Precisa de Node 24+ e de Docker (ou qualquer Postgres) para subir a API.
 
 ```bash
 npm install
@@ -43,126 +43,128 @@ npm run db:migrate
 npm run start:dev
 ```
 
-Open <http://localhost:3333/docs>, call `POST /auth/sign-up`, then `POST /auth/sign-in` and click **Authorize** with
-the `accessToken`.
+Abra <http://localhost:3333/docs>, chame `POST /auth/sign-up` e depois `POST /auth/sign-in`, e clique em **Authorize**
+com o `accessToken`.
 
-The e2e tests do **not** need Docker: without `DATABASE_URL` they start PGlite (Postgres compiled to WASM) in-process.
+Os testes e2e **não** precisam de Docker: sem `DATABASE_URL`, eles sobem o PGlite (Postgres compilado para WASM) no
+próprio processo.
 
 ## Scripts
 
-| Script                                 | What it does                                                             |
-| -------------------------------------- | ------------------------------------------------------------------------ |
-| `npm run start:dev`                    | Starts the API in watch mode                                             |
-| `npm run build` / `npm run start:prod` | Compiles to `dist/` / runs the compiled app                              |
-| `npm test`                             | Unit + integration tests                                                 |
-| `npm run test:e2e`                     | E2E over HTTP (uses `DATABASE_URL` if set, PGlite otherwise)             |
-| `npm run test:cov`                     | Unit + integration with coverage                                         |
-| `npm run lint` / `npm run lint:check`  | ESLint with / without `--fix`                                            |
-| `npm run typecheck`                    | `tsc --noEmit`                                                           |
-| `npm run db:generate`                  | Generates a migration from the schema diff (never write one by hand)     |
-| `npm run db:migrate`                   | Applies pending migrations (drizzle-kit, development)                    |
-| `npm run db:migrate:prod`              | Applies pending migrations with the compiled migrator (production image) |
-| `npm run db:studio`                    | Opens Drizzle Studio                                                     |
+| Script                                 | O que faz                                                         |
+| -------------------------------------- | ----------------------------------------------------------------- |
+| `npm run start:dev`                    | Sobe a API em modo watch                                          |
+| `npm run build` / `npm run start:prod` | Compila em `dist/` / roda o compilado                             |
+| `npm test`                             | Testes unit e integration                                         |
+| `npm run test:e2e`                     | E2E por HTTP (usa `DATABASE_URL` se houver, senão PGlite)         |
+| `npm run test:cov`                     | Unit e integration com cobertura                                  |
+| `npm run lint` / `npm run lint:check`  | ESLint com / sem `--fix`                                          |
+| `npm run typecheck`                    | `tsc --noEmit`                                                    |
+| `npm run db:generate`                  | Gera a migration a partir do schema (nunca escreva uma à mão)     |
+| `npm run db:migrate`                   | Aplica as migrations pendentes (drizzle-kit, desenvolvimento)     |
+| `npm run db:migrate:prod`              | Aplica as pendentes com o migrator compilado (imagem de produção) |
+| `npm run db:studio`                    | Abre o Drizzle Studio                                             |
 
-## Project structure
+## Estrutura de pastas
 
 ```
 src/
-├── core/                    # framework-free building blocks
+├── core/                    # blocos sem framework
 │   ├── domain/              # Entity, AggregateRoot, ValueObject, UniqueEntityId
-│   ├── events/              # DomainEvent, DomainEvents (in-process bus)
+│   ├── events/              # DomainEvent, DomainEvents (barramento no processo)
 │   ├── errors/              # DomainError (code + httpStatus)
 │   ├── logic/               # Either, Optional
-│   ├── auth/                # Actor, roles
+│   ├── auth/                # Actor, papéis
 │   └── pagination/          # { results, meta }
-├── domain/<context>/
-│   ├── enterprise/          # entities, value objects, events, policies
-│   ├── applications/        # use cases + abstract repositories/gateways (DI tokens)
-│   └── errors/              # the context's DomainErrors
+├── domain/<contexto>/
+│   ├── enterprise/          # entidades, value objects, eventos, policies
+│   ├── applications/        # use cases + repositórios/gateways abstratos (tokens de DI)
+│   └── errors/              # os DomainErrors do contexto
 ├── infra/
-│   ├── env/                 # zod schema + EnvService
-│   ├── database/            # Drizzle schema, mappers, repositories, migrator
+│   ├── env/                 # schema zod + EnvService
+│   ├── database/            # schema do Drizzle, mappers, repositórios, migrator
 │   ├── cryptography/        # bcrypt, JWT
-│   └── events/              # subscribers of domain events
+│   └── events/              # subscribers dos eventos de domínio
 ├── presentations/http/
-│   ├── controllers/<context>/  # one controller per endpoint, DTOs, view models, module
+│   ├── controllers/<contexto>/  # um controller por endpoint, DTOs, view models, módulo
 │   ├── auth/                # AuthGuard, RolesGuard, @Public, @Roles, @CurrentActor
-│   └── errors/              # the global error filter
+│   └── errors/              # o filtro global de erros
 test/
 ├── factories/               # makeUser(), makeTask()
-├── repositories/            # in-memory repositories
+├── repositories/            # repositórios in-memory
 ├── cryptography/            # fakes
-└── e2e/                     # global setup (Postgres/PGlite) + HTTP specs
+└── e2e/                     # setup global (Postgres/PGlite) + specs HTTP
 ```
 
-## How a request flows
+## O caminho de uma requisição
 
 ```
 HTTP → AuthGuard → RolesGuard → ValidationPipe (DTO) → Controller
      → UseCase.execute() → Either
-         ├─ Left(DomainError)  → controller throws it → HttpErrorFilter → { statusCode, code, message }
-         └─ Right(value)       → ViewModel.toHttp() → JSON
-UseCase → abstract Repository → (Nest DI) → DrizzleRepository → Postgres
-                                              └─ after the write: DomainEvents → subscribers
+         ├─ Left(DomainError)  → o controller lança → HttpErrorFilter → { statusCode, code, message }
+         └─ Right(valor)       → ViewModel.toHttp() → JSON
+UseCase → Repository abstrato → (DI do Nest) → DrizzleRepository → Postgres
+                                                └─ depois da escrita: DomainEvents → subscribers
 ```
 
-## The rules that matter
+## As regras que importam
 
-1. A use case returns `Either<DomainError, T>`; it never throws for a business rule.
-2. A controller has three useful lines: call the use case, throw on `isLeft()`, map the view model.
-3. The abstract repository is the DI token. Abstract class in `domain`, `useClass` in `infra`, in-memory in tests.
-4. An entity never leaves through HTTP: always a view model in between.
-5. Every business error is a `DomainError` with a stable `code`.
-6. One file, one responsibility: one use case, one controller per endpoint, one table per schema file.
-7. Tests are born with the code, with in-memory repositories and `make*` factories, without a Nest module.
+1. Use case devolve `Either<DomainError, T>` e nunca lança por regra de negócio.
+2. Controller tem três linhas úteis: chamar o use case, lançar no `isLeft()` e mapear o view model.
+3. O repositório abstrato é o token de DI: classe abstrata no `domain`, `useClass` na `infra`, in-memory no teste.
+4. Entidade nunca sai crua pelo HTTP: sempre um view model no meio.
+5. Todo erro de negócio é um `DomainError` com `code` estável.
+6. Um arquivo, uma responsabilidade: um use case, um controller por endpoint, uma tabela por arquivo de schema.
+7. O teste nasce junto com o código, com repositório in-memory e factory `make*`, sem módulo do Nest.
 
-Details and examples in [`docs/architecture.md`](./docs/architecture.md) and [`docs/patterns/`](./docs/patterns).
+Os detalhes, com exemplos, ficam em [`docs/architecture.md`](./docs/architecture.md) e
+[`docs/patterns/`](./docs/patterns) (em inglês).
 
 ## API
 
-| Method   | Route                 | Auth    | Description                                                           |
-| -------- | --------------------- | ------- | --------------------------------------------------------------------- |
-| `POST`   | `/auth/sign-up`       | public  | Create an account (`USER`)                                            |
-| `POST`   | `/auth/sign-in`       | public  | Get an access token                                                   |
-| `GET`    | `/me`                 | bearer  | The signed-in user                                                    |
-| `GET`    | `/users`              | `ADMIN` | Paginated list of users                                               |
-| `POST`   | `/tasks`              | bearer  | Create a task                                                         |
-| `GET`    | `/tasks`              | bearer  | Your tasks (`ADMIN`: everyone's): `page`, `limit`, `search`, `status` |
-| `GET`    | `/tasks/:id`          | bearer  | One task                                                              |
-| `PATCH`  | `/tasks/:id`          | bearer  | Change title/description (`description: null` clears)                 |
-| `PATCH`  | `/tasks/:id/complete` | bearer  | Complete a task (raises `TaskCompletedEvent`)                         |
-| `DELETE` | `/tasks/:id`          | bearer  | Delete a task                                                         |
-| `GET`    | `/health`             | public  | Liveness probe                                                        |
+| Método   | Rota                  | Auth    | Descrição                                                                   |
+| -------- | --------------------- | ------- | --------------------------------------------------------------------------- |
+| `POST`   | `/auth/sign-up`       | pública | Cria uma conta (`USER`)                                                     |
+| `POST`   | `/auth/sign-in`       | pública | Devolve um access token                                                     |
+| `GET`    | `/me`                 | bearer  | O usuário logado                                                            |
+| `GET`    | `/users`              | `ADMIN` | Lista paginada de usuários                                                  |
+| `POST`   | `/tasks`              | bearer  | Cria uma tarefa                                                             |
+| `GET`    | `/tasks`              | bearer  | As suas tarefas (`ADMIN`: as de todos): `page`, `limit`, `search`, `status` |
+| `GET`    | `/tasks/:id`          | bearer  | Uma tarefa                                                                  |
+| `PATCH`  | `/tasks/:id`          | bearer  | Muda título/descrição (`description: null` apaga)                           |
+| `PATCH`  | `/tasks/:id/complete` | bearer  | Conclui uma tarefa (dispara o `TaskCompletedEvent`)                         |
+| `DELETE` | `/tasks/:id`          | bearer  | Apaga uma tarefa                                                            |
+| `GET`    | `/health`             | pública | Liveness probe                                                              |
 
 ## Claude Code
 
-`CLAUDE.md` describes the architecture and the conventions, and `.claude/skills/` has project skills:
+O `CLAUDE.md` descreve a arquitetura e as convenções, e `.claude/skills/` traz as skills do projeto:
 
-| Skill            | Use it to                                                                              |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| `new-module`     | Scaffold a whole bounded context (entity, repository, use cases, Drizzle, HTTP, tests) |
-| `new-use-case`   | Add one use case with its spec, controller, DTOs, view model and Swagger               |
-| `new-migration`  | Change the Drizzle schema and generate the migration                                   |
-| `pattern-review` | Review a diff against the rules above                                                  |
+| Skill            | Para que serve                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `new-module`     | Criar um contexto inteiro (entidade, repositório, use cases, Drizzle, HTTP e testes) |
+| `new-use-case`   | Criar um use case com spec, controller, DTOs, view model e Swagger                   |
+| `new-migration`  | Mudar o schema do Drizzle e gerar a migration                                        |
+| `pattern-review` | Revisar um diff contra as regras acima                                               |
 
-`skills-lock.json` also pins the community skill
-[`nestjs-best-practices`](https://github.com/Kadajett/agent-nestjs-skills) (third party, not vendored). Install it with
-`npx skills add Kadajett/agent-nestjs-skills`.
+O `skills-lock.json` também fixa a skill da comunidade
+[`nestjs-best-practices`](https://github.com/Kadajett/agent-nestjs-skills), de terceiros e sem cópia aqui. Para
+instalar: `npx skills add Kadajett/agent-nestjs-skills`.
 
-## Using it as a template
+## Usando como template
 
-1. Click **Use this template** on GitHub (or clone it) and rename the package in `package.json`.
-2. Keep `identity` if you need accounts. Delete `tasks` (domain, infra mappers/repositories/schema, controllers,
-   tests) or use it as the model for your first context.
-3. Change the schema and run `npm run db:generate` to create your first migration.
-4. Run `/new-module` in Claude Code for each new bounded context.
+1. Clique em **Use this template** no GitHub (ou clone) e troque o nome no `package.json`.
+2. Mantenha o `identity` se precisar de contas. Apague o `tasks` (domínio, mappers, repositórios e schema da infra,
+   controllers e testes) ou use-o de modelo para o seu primeiro contexto.
+3. Mude o schema e rode `npm run db:generate` para criar a sua primeira migration.
+4. Rode `/new-module` no Claude Code para cada contexto novo.
 
-## Out of scope (good next steps)
+## Fora do escopo (bons próximos passos)
 
-Refresh tokens, password reset, e-mail, file uploads, cache, queues and structured logging are not included on
-purpose: each project picks its own provider. The layers make each one an adapter in `infra` behind an abstract class
-in `domain`.
+Refresh token, recuperação de senha, e-mail, upload, cache, filas e logger estruturado ficaram de fora de propósito,
+porque cada projeto escolhe o seu provedor. Com as camadas, cada um vira um adapter na `infra` atrás de uma classe
+abstrata no `domain`.
 
-## License
+## Licença
 
 [MIT](./LICENSE)

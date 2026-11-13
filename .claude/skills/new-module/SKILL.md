@@ -58,5 +58,5 @@ Run `npm test` before moving on.
 
 ## 5. Finish
 
-- Add the routes to the API table in `README.md` (and `README.pt-BR.md`).
+- Add the routes to the API table in `README.md` (pt-BR) and `README.en.md` (English).
 - Run `npm run lint:check`, `npm run typecheck`, `npm test`, `npm run test:e2e`, `npm run build`.
