@@ -54,7 +54,9 @@ The dependency rule is enforced by ESLint. Never silence it with `eslint-disable
 11. Never write or edit a migration by hand: change the schema, run `npm run db:generate`, review the SQL.
 12. Tests are born with the code: `*.unit.spec.ts` for pure code, `*.integration.spec.ts` for use cases with
     in-memory repositories and `make*` factories, e2e for routes. Cover every `Left` a use case declares.
-13. Exact dependency versions (`.npmrc` has `save-exact`). Conventional Commits (commitlint runs on `commit-msg`).
+13. Log through Nest's `Logger` (never `console.log`), pass the `Error` itself to `logger.error`, and do not log
+    expected `DomainError`s, secrets or request bodies. The domain does not log (docs/patterns/logging.md).
+14. Exact dependency versions (`.npmrc` has `save-exact`). Conventional Commits (commitlint runs on `commit-msg`).
 
 ## Naming
 

@@ -6,6 +6,13 @@
 
 > 🇧🇷 [Leia em português](./README.md)
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/banner-dark.svg" />
+    <img src="./docs/assets/banner-light.svg" alt="Terminal banner when the API starts" width="640" />
+  </picture>
+</p>
+
 A **NestJS + Drizzle ORM** backend template with Clean Architecture and DDD building blocks, strict lint that enforces
 the layers, git hooks, end-to-end tests against a real Postgres and **Claude Code skills** that know the patterns.
 
@@ -27,9 +34,44 @@ It ships two bounded contexts as executable examples: **identity** (sign-up, sig
   (`*.integration.spec.ts`) and e2e over HTTP against Postgres, with **no Docker required** (PGlite).
 - **Quality gates**: ESLint (type-checked) + Prettier, husky (`pre-commit` runs lint-staged and related tests,
   `commit-msg` runs commitlint), GitHub Actions CI.
+- **A real terminal**: banner, boot checklist, route table with who can call each route, one colored line per
+  request and an error block with the stack. In production, one JSON line per event.
 - **Swagger** at `/docs`, health check at `/health`, zod-validated environment, multi-stage Dockerfile.
 - **Claude Code ready**: `CLAUDE.md` plus skills to scaffold a module, a use case, a migration and to review a diff
   against the patterns.
+
+## The terminal
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/terminal-dark.svg" />
+    <img src="./docs/assets/terminal-light.svg" alt="API boot: checklist, route table and one line per request" width="860" />
+  </picture>
+</p>
+
+The logger belongs to the template (`src/infra/logger`), with no extra dependency:
+
+- **Banner** with the project name (`LOG_BRAND`). The gradient ends in the opposite of the terminal background: white
+  on a dark theme, black on a light one. The background is detected automatically.
+- **Boot checklist**: environment validated, Postgres answering, Swagger up, with the time of each step. An invalid
+  environment or a busy port becomes a red block with a hint.
+- **Route table** with the access of each route (`public`, `jwt` or the required role), read from the same
+  decorators the guards use. A route that is public by mistake shows up on every boot.
+- **One line per request**: method, route, status, duration, who called, the error `code` and the request id
+  (`x-request-id`, echoed in the response header).
+- **Unexpected errors (5xx)** print a block with the stack, with the project's own files highlighted.
+
+| Variable         | Values                                 | Default                                  |
+| ---------------- | -------------------------------------- | ---------------------------------------- |
+| `LOG_FORMAT`     | `pretty` \| `json`                     | `json` in production, `pretty` elsewhere |
+| `LOG_LEVEL`      | `debug` \| `info` \| `warn` \| `error` | `info`                                   |
+| `LOG_BRAND`      | banner text                            | `NESTJS`                                 |
+| `LOG_BANNER`     | `on` \| `off`                          | `on`                                     |
+| `LOG_REQUESTS`   | `on` \| `off`                          | `on`                                     |
+| `LOG_BACKGROUND` | `auto` \| `dark` \| `light`            | `auto`                                   |
+
+`NO_COLOR` and `FORCE_COLOR` are respected, and without an interactive terminal (pipe, CI) no color is written. The
+banner signature lives in `src/infra/logger/terminal/banner.ts`: replace it with yours.
 
 ## Quick start
 
@@ -63,8 +105,16 @@ The e2e tests do **not** need Docker: without `DATABASE_URL` they start PGlite (
 | `npm run db:migrate`                   | Applies pending migrations (drizzle-kit, development)                    |
 | `npm run db:migrate:prod`              | Applies pending migrations with the compiled migrator (production image) |
 | `npm run db:studio`                    | Opens Drizzle Studio                                                     |
+| `npm run docs:assets`                  | Regenerates the images of this README (needs `npm run build`)            |
 
 ## Project structure
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/layers-dark.svg" />
+    <img src="./docs/assets/layers-light.svg" alt="The layers and the dependency rule" width="820" />
+  </picture>
+</p>
 
 ```
 src/
@@ -97,14 +147,12 @@ test/
 
 ## How a request flows
 
-```
-HTTP → AuthGuard → RolesGuard → ValidationPipe (DTO) → Controller
-     → UseCase.execute() → Either
-         ├─ Left(DomainError)  → controller throws it → HttpErrorFilter → { statusCode, code, message }
-         └─ Right(value)       → ViewModel.toHttp() → JSON
-UseCase → abstract Repository → (Nest DI) → DrizzleRepository → Postgres
-                                              └─ after the write: DomainEvents → subscribers
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/request-flow-dark.svg" />
+    <img src="./docs/assets/request-flow-light.svg" alt="How a request flows" width="820" />
+  </picture>
+</p>
 
 ## The rules that matter
 

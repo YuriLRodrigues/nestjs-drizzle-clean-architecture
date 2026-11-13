@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" role="img">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8C959F"/></marker></defs>
+<rect x="0.5" y="0.5" width="879" height="469" rx="12" fill="#FFFFFF" stroke="#D0D7DE"/>
+<text x="28" y="38" fill="#1F2328" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">Layers and the dependency rule</text>
+<text x="28" y="60" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">Arrows point to what a layer may import. ESLint fails the build on any other import.</text>
+<rect x="28" y="84" width="400" height="112" rx="10" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/>
+<text x="46" y="114" fill="#1D4ED8" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="15" font-weight="700" text-anchor="start">presentations/http</text>
+<text x="46" y="138" fill="#1F2328" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">The HTTP edge</text>
+<text x="46" y="158" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">controllers · DTOs · view models · guards</text>
+<text x="46" y="178" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">error filter · Swagger</text>
+<rect x="452" y="84" width="400" height="112" rx="10" fill="#FEF9C3" stroke="#A16207" stroke-width="1.5"/>
+<text x="470" y="114" fill="#A16207" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="15" font-weight="700" text-anchor="start">infra</text>
+<text x="470" y="138" fill="#1F2328" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">Adapters</text>
+<text x="470" y="158" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">Drizzle repositories · mappers · migrations</text>
+<text x="470" y="178" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">bcrypt · JWT · env · event subscribers · logger</text>
+<rect x="140" y="236" width="600" height="92" rx="10" fill="#DCFCE7" stroke="#15803D" stroke-width="1.5"/>
+<text x="158" y="266" fill="#15803D" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="15" font-weight="700" text-anchor="start">domain/&lt;context&gt;</text>
+<text x="158" y="290" fill="#1F2328" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">The business rules</text>
+<text x="158" y="310" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">entities · value objects · events · policies · use cases · abstract repositories</text>
+<rect x="240" y="368" width="400" height="74" rx="10" fill="#F6F8FA" stroke="#8C959F" stroke-width="1.5"/>
+<text x="258" y="398" fill="#8C959F" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="15" font-weight="700" text-anchor="start">core</text>
+<text x="258" y="422" fill="#1F2328" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">Framework-free building blocks: Entity, Either, DomainError, events</text>
+<path d="M228 196L228 216L330 216L330 234" fill="none" stroke="#8C959F" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M652 196L652 216L550 216L550 234" fill="none" stroke="#8C959F" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M440 328L440 366" fill="none" stroke="#8C959F" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="452" y="352" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">imports</text>
+<text x="660" y="224" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">implements the abstract classes</text>
+<text x="60" y="224" fill="#656D76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="start">calls the use cases</text>
+</svg>

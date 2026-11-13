@@ -6,6 +6,13 @@
 
 > 🇺🇸 [Read in English](./README.en.md)
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/banner-dark.svg" />
+    <img src="./docs/assets/banner-light.svg" alt="Banner do terminal ao subir a API" width="640" />
+  </picture>
+</p>
+
 Template de backend **NestJS + Drizzle ORM** com Clean Architecture e os blocos do DDD, lint que garante as camadas,
 git hooks, testes e2e contra um Postgres de verdade e **skills do Claude Code** que conhecem os padrões.
 
@@ -27,9 +34,44 @@ Vem com dois contextos de exemplo que rodam de verdade: **identity** (cadastro, 
   (`*.integration.spec.ts`) e e2e por HTTP contra Postgres, **sem precisar de Docker** (PGlite).
 - **Qualidade**: ESLint (com tipos) + Prettier, husky (`pre-commit` roda o lint-staged e os testes relacionados,
   `commit-msg` roda o commitlint) e CI no GitHub Actions.
+- **Terminal de verdade**: banner, checklist do boot, tabela de rotas com quem pode chamar cada uma, uma linha
+  colorida por requisição e bloco de erro com a stack. Em produção, uma linha JSON por evento.
 - **Swagger** em `/docs`, health check em `/health`, env validado com zod e Dockerfile multi-stage.
 - **Pronto para o Claude Code**: `CLAUDE.md` e skills para criar módulo, use case e migration, e para revisar um diff
   contra os padrões.
+
+## O terminal
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/terminal-dark.svg" />
+    <img src="./docs/assets/terminal-light.svg" alt="Boot da API: checklist, tabela de rotas e uma linha por requisição" width="860" />
+  </picture>
+</p>
+
+O logger é do próprio template (`src/infra/logger`), sem dependência extra:
+
+- **Banner** com o nome do projeto (`LOG_BRAND`). O degradê termina na cor oposta ao fundo do terminal: branco no tema
+  escuro, preto no claro. O fundo é detectado sozinho.
+- **Checklist do boot**: env validada, Postgres respondendo, Swagger no ar, com o tempo de cada etapa. Env inválida
+  ou porta ocupada vira um bloco vermelho com a dica do que fazer.
+- **Tabela de rotas** com o acesso de cada uma (`public`, `jwt` ou o papel exigido), lida dos mesmos decorators que
+  os guards usam. Rota pública por engano aparece em todo boot.
+- **Uma linha por requisição**: método, rota, status, tempo, quem chamou, o `code` do erro e o request id
+  (`x-request-id`, devolvido no header).
+- **Erro inesperado (5xx)** sai num bloco com a stack, com os arquivos do projeto em destaque.
+
+| Variável         | Valores                                | Padrão                                |
+| ---------------- | -------------------------------------- | ------------------------------------- |
+| `LOG_FORMAT`     | `pretty` \| `json`                     | `json` em produção, `pretty` no resto |
+| `LOG_LEVEL`      | `debug` \| `info` \| `warn` \| `error` | `info`                                |
+| `LOG_BRAND`      | texto do banner                        | `NESTJS`                              |
+| `LOG_BANNER`     | `on` \| `off`                          | `on`                                  |
+| `LOG_REQUESTS`   | `on` \| `off`                          | `on`                                  |
+| `LOG_BACKGROUND` | `auto` \| `dark` \| `light`            | `auto`                                |
+
+`NO_COLOR` e `FORCE_COLOR` são respeitados, e sem terminal interativo (pipe, CI) não sai nenhuma cor. A assinatura do
+banner fica em `src/infra/logger/terminal/banner.ts`: troque pela sua.
 
 ## Como rodar
 
@@ -64,8 +106,16 @@ próprio processo.
 | `npm run db:migrate`                   | Aplica as migrations pendentes (drizzle-kit, desenvolvimento)     |
 | `npm run db:migrate:prod`              | Aplica as pendentes com o migrator compilado (imagem de produção) |
 | `npm run db:studio`                    | Abre o Drizzle Studio                                             |
+| `npm run docs:assets`                  | Regenera as imagens deste README (precisa do `npm run build`)     |
 
 ## Estrutura de pastas
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/layers-dark.svg" />
+    <img src="./docs/assets/layers-light.svg" alt="As camadas e a regra de dependência" width="820" />
+  </picture>
+</p>
 
 ```
 src/
@@ -98,14 +148,12 @@ test/
 
 ## O caminho de uma requisição
 
-```
-HTTP → AuthGuard → RolesGuard → ValidationPipe (DTO) → Controller
-     → UseCase.execute() → Either
-         ├─ Left(DomainError)  → o controller lança → HttpErrorFilter → { statusCode, code, message }
-         └─ Right(valor)       → ViewModel.toHttp() → JSON
-UseCase → Repository abstrato → (DI do Nest) → DrizzleRepository → Postgres
-                                                └─ depois da escrita: DomainEvents → subscribers
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/assets/request-flow-dark.svg" />
+    <img src="./docs/assets/request-flow-light.svg" alt="O caminho de uma requisição" width="820" />
+  </picture>
+</p>
 
 ## As regras que importam
 

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" role="img">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6E7681"/></marker></defs>
+<rect x="0.5" y="0.5" width="879" height="399" rx="12" fill="#0D1117" stroke="#30363D"/>
+<text x="28" y="38" fill="#E6EDF3" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">How a request flows</text>
+<text x="28" y="60" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start">A use case never throws for a business rule: it returns Left(error) or Right(value).</text>
+<rect x="28" y="88" width="76" height="38" rx="8" fill="#161B22" stroke="#6E7681" stroke-width="1.5"/>
+<text x="66" y="112" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">HTTP</text>
+
+<rect x="126" y="88" width="110" height="38" rx="8" fill="#161B22" stroke="#6E7681" stroke-width="1.5"/>
+<text x="181" y="112" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">AuthGuard</text>
+
+<rect x="258" y="88" width="116" height="38" rx="8" fill="#161B22" stroke="#6E7681" stroke-width="1.5"/>
+<text x="316" y="112" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">RolesGuard</text>
+
+<rect x="396" y="88" width="176" height="38" rx="8" fill="#161B22" stroke="#6E7681" stroke-width="1.5"/>
+<text x="484" y="112" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">ValidationPipe (DTO)</text>
+
+<rect x="594" y="88" width="116" height="38" rx="8" fill="#172554" stroke="#60A5FA" stroke-width="1.5"/>
+<text x="652" y="112" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">Controller</text>
+
+<rect x="732" y="88" width="120" height="38" rx="8" fill="#052E16" stroke="#4ADE80" stroke-width="1.5"/>
+<text x="792" y="112" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">UseCase</text>
+
+<path d="M104 107L124 107" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M236 107L256 107" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M374 107L394 107" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M572 107L592 107" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M710 107L730 107" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="792" y="158" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">Either</text>
+<path d="M760 126L760 176L652 176L652 198" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="482" y="200" width="340" height="54" rx="8" fill="#052E16" stroke="#4ADE80" stroke-width="1.5"/>
+<text x="652" y="224" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">Right(value) → ViewModel.toHttp()</text>
+<text x="652" y="242" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle">the entity never leaves raw: 200 / 201 with JSON</text>
+<path d="M824 126L824 270L652 270L652 286" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="482" y="288" width="340" height="54" rx="8" fill="#450A0A" stroke="#FF6B6B" stroke-width="1.5"/>
+<text x="652" y="312" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">Left(DomainError) → HttpErrorFilter</text>
+<text x="652" y="330" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle">{ statusCode, code, message, details? }</text>
+<path d="M770 88L770 72L866 72L866 376L14 376L14 227L26 227" fill="none" stroke="#6E7681" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+<rect x="28" y="200" width="180" height="54" rx="8" fill="#052E16" stroke="#4ADE80" stroke-width="1.5"/>
+<text x="118" y="224" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">Repository</text>
+<text x="118" y="242" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle">abstract class = DI token</text>
+<rect x="28" y="288" width="180" height="54" rx="8" fill="#422006" stroke="#FACC15" stroke-width="1.5"/>
+<text x="118" y="312" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">DrizzleRepository</text>
+<text x="118" y="330" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle">mapper ⇄ row</text>
+<rect x="252" y="288" width="150" height="38" rx="8" fill="#161B22" stroke="#6E7681" stroke-width="1.5"/>
+<text x="327" y="312" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">Postgres</text>
+
+<rect x="252" y="200" width="150" height="54" rx="8" fill="#422006" stroke="#FACC15" stroke-width="1.5"/>
+<text x="327" y="224" fill="#E6EDF3" font-family="ui-monospace,SFMono-Regular,'Cascadia Mono',Consolas,Menlo,monospace" font-size="13" font-weight="600" text-anchor="middle">DomainEvents</text>
+<text x="327" y="242" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle">after the write</text>
+<path d="M118 254L118 286" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M208 315L250 315" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<path d="M327 288L327 256" fill="none" stroke="#6E7681" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="440" y="366" fill="#8C97A7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="12" font-weight="400" text-anchor="middle">the use case asks for the abstract repository; Nest injects the Drizzle one</text>
+</svg>

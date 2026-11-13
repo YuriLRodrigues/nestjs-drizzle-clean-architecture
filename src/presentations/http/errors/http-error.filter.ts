@@ -18,7 +18,10 @@ export class HttpErrorFilter implements ExceptionFilter {
 
   catch(exception: unknown, host: ArgumentsHost): void {
     const body = this.toBody(exception)
-    host.switchToHttp().getResponse<Response>().status(body.statusCode).json(body)
+    const response = host.switchToHttp().getResponse<Response>()
+    // Read by the request log, so the line of a failed request says which error it was.
+    response.locals.errorCode = body.code
+    response.status(body.statusCode).json(body)
   }
 
   private toBody(exception: unknown): ErrorResponseDto {
@@ -48,7 +51,8 @@ export class HttpErrorFilter implements ExceptionFilter {
       return { statusCode, code: `HTTP.${HttpStatus[statusCode] ?? 'ERROR'}`, message: exception.message }
     }
 
-    this.logger.error(exception instanceof Error ? (exception.stack ?? exception.message) : String(exception))
+    // The logger turns an `Error` into a block with its stack (pretty) or into a `stack` field (json).
+    this.logger.error(exception instanceof Error ? exception : String(exception))
 
     return { statusCode: 500, code: 'INTERNAL.UNEXPECTED', message: 'Something went wrong.' }
   }

@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1154" height="591" viewBox="0 0 1154 591" role="img">
+<style>text{font-family:'Cascadia Mono','Cascadia Code','JetBrains Mono',Consolas,Menlo,'DejaVu Sans Mono',monospace;font-size:14px;white-space:pre}</style>
+<rect x="0.5" y="0.5" width="1153" height="590" rx="10" fill="#0D1117" stroke="#30363D"/>
+<path d="M1 34V11a10 10 0 0 1 10-10h1132a10 10 0 0 1 10 10v23z" fill="#161B22"/>
+<circle cx="20" cy="17" r="6" fill="#FF5F57"/><circle cx="40" cy="17" r="6" fill="#FEBC2E"/><circle cx="60" cy="17" r="6" fill="#28C840"/>
+<text x="577" y="22" text-anchor="middle" fill="#8C97A7" style="font-size:12px">npm run start:dev</text>
+<text x="43.2" y="77" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#4ade80">✔</text>
+<text x="60.0" y="77" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">env</text>
+<text x="144.0" y="77" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#D5DAE1">validated (zod)</text>
+<text x="463.2" y="77" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">3ms</text>
+<text x="43.2" y="94" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#4ade80">✔</text>
+<text x="60.0" y="94" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">Postgres</text>
+<text x="144.0" y="94" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#D5DAE1">connected</text>
+<text x="454.8" y="94" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">14ms</text>
+<text x="43.2" y="111" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#4ade80">✔</text>
+<text x="60.0" y="111" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">Swagger</text>
+<text x="144.0" y="111" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#D5DAE1">/docs</text>
+<text x="26.4" y="145" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#f5f7fa" font-weight="700">routes</text>
+<text x="85.2" y="145" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">· 11 routes</text>
+<text x="43.2" y="162" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#49cc90" font-weight="700">POST</text>
+<text x="110.4" y="162" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/auth/sign-in</text>
+<text x="286.8" y="162" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#7dd3fc">public</text>
+<text x="354.0" y="162" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">SignIn</text>
+<text x="43.2" y="179" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#49cc90" font-weight="700">POST</text>
+<text x="110.4" y="179" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/auth/sign-up</text>
+<text x="286.8" y="179" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#7dd3fc">public</text>
+<text x="354.0" y="179" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">SignUp</text>
+<text x="43.2" y="196" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="110.4" y="196" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/health</text>
+<text x="286.8" y="196" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#7dd3fc">public</text>
+<text x="354.0" y="196" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">Health</text>
+<text x="43.2" y="213" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="110.4" y="213" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/me</text>
+<text x="286.8" y="213" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="213" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">GetMe</text>
+<text x="43.2" y="230" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="110.4" y="230" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks</text>
+<text x="286.8" y="230" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="230" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">ListTasks</text>
+<text x="43.2" y="247" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#49cc90" font-weight="700">POST</text>
+<text x="110.4" y="247" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks</text>
+<text x="286.8" y="247" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="247" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">CreateTask</text>
+<text x="43.2" y="264" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="110.4" y="264" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id</text>
+<text x="286.8" y="264" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="264" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">GetTask</text>
+<text x="43.2" y="281" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#50e3c2" font-weight="700">PATCH</text>
+<text x="110.4" y="281" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id</text>
+<text x="286.8" y="281" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="281" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">UpdateTask</text>
+<text x="43.2" y="298" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#c792ea" font-weight="700">DELETE</text>
+<text x="110.4" y="298" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id</text>
+<text x="286.8" y="298" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="298" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">DeleteTask</text>
+<text x="43.2" y="315" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#50e3c2" font-weight="700">PATCH</text>
+<text x="110.4" y="315" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id/complete</text>
+<text x="286.8" y="315" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">jwt</text>
+<text x="354.0" y="315" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">CompleteTask</text>
+<text x="43.2" y="332" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="110.4" y="332" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/users</text>
+<text x="286.8" y="332" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#facc15">ADMIN</text>
+<text x="354.0" y="332" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">ListUsers</text>
+<text x="26.4" y="366" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#4ade80">✔</text>
+<text x="43.2" y="366" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#f5f7fa" font-weight="700">ready in 306ms</text>
+<text x="169.2" y="366" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">·</text>
+<text x="186.0" y="366" textLength="176.4" lengthAdjust="spacingAndGlyphs" fill="#60a5fa" font-weight="700">http://localhost:3333</text>
+<text x="370.8" y="366" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">·</text>
+<text x="387.6" y="366" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">docs /docs</text>
+<text x="26.4" y="400" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="400" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#49cc90" font-weight="700">POST</text>
+<text x="177.6" y="400" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/auth/sign-up</text>
+<text x="421.2" y="400" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#4ade80">201</text>
+<text x="480.0" y="400" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">160ms</text>
+<text x="538.8" y="400" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">rid 78a49501</text>
+<text x="26.4" y="417" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="417" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#49cc90" font-weight="700">POST</text>
+<text x="177.6" y="417" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/auth/sign-in</text>
+<text x="421.2" y="417" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#4ade80">200</text>
+<text x="480.0" y="417" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">101ms</text>
+<text x="538.8" y="417" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">rid 8e18dbb7</text>
+<text x="26.4" y="434" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="434" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#49cc90" font-weight="700">POST</text>
+<text x="177.6" y="434" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks</text>
+<text x="421.2" y="434" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#4ade80">201</text>
+<text x="496.8" y="434" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">8ms</text>
+<text x="538.8" y="434" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">USER 5eef11ae · rid b0cc93ae</text>
+<text x="26.4" y="451" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="451" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="177.6" y="451" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks</text>
+<text x="421.2" y="451" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#4ade80">200</text>
+<text x="488.4" y="451" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">16ms</text>
+<text x="538.8" y="451" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">USER 5eef11ae · rid 5937b941</text>
+<text x="26.4" y="468" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="468" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#7dd3fc">INFO</text>
+<text x="169.2" y="468" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">[OnTaskCompleted]</text>
+<text x="320.4" y="468" textLength="814.8" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">Task d6d9f459-b198-4ea3-96c7-0ca3050c8560 completed by owner 5eef11ae-d0f5-4d3c-ac36-f8503019315e</text>
+<text x="26.4" y="485" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="485" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#50e3c2" font-weight="700">PATCH</text>
+<text x="177.6" y="485" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id/complete</text>
+<text x="421.2" y="485" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#4ade80">200</text>
+<text x="496.8" y="485" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">8ms</text>
+<text x="538.8" y="485" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">USER 5eef11ae · rid 617ca478</text>
+<text x="26.4" y="502" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="502" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#50e3c2" font-weight="700">PATCH</text>
+<text x="177.6" y="502" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id/complete</text>
+<text x="421.2" y="502" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#facc15">409</text>
+<text x="496.8" y="502" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">4ms</text>
+<text x="538.8" y="502" textLength="184.8" lengthAdjust="spacingAndGlyphs" fill="#facc15">TASK.ALREADY_COMPLETED</text>
+<text x="740.4" y="502" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">USER 5eef11ae · rid 6cdfb9c9</text>
+<text x="26.4" y="519" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="519" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="177.6" y="519" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/users</text>
+<text x="421.2" y="519" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#facc15">403</text>
+<text x="496.8" y="519" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">1ms</text>
+<text x="538.8" y="519" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#facc15">HTTP.FORBIDDEN</text>
+<text x="673.2" y="519" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">USER 5eef11ae · rid c47ca61d</text>
+<text x="26.4" y="536" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="536" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="177.6" y="536" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/tasks/:id</text>
+<text x="421.2" y="536" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#facc15">400</text>
+<text x="496.8" y="536" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">1ms</text>
+<text x="538.8" y="536" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#facc15">HTTP.BAD_REQUEST</text>
+<text x="690.0" y="536" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">USER 5eef11ae · rid 897118ce</text>
+<text x="26.4" y="553" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">15:38:49</text>
+<text x="110.4" y="553" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#61affe" font-weight="700">GET</text>
+<text x="177.6" y="553" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#d5dae1">/me</text>
+<text x="421.2" y="553" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#facc15">401</text>
+<text x="496.8" y="553" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">1ms</text>
+<text x="538.8" y="553" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#facc15">HTTP.UNAUTHORIZED</text>
+<text x="698.4" y="553" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#8c97a7">rid a18c002e</text>
+</svg>

@@ -13,4 +13,5 @@ Day-to-day code patterns. Every example comes from the `tasks` and `identity` co
 | [Listing contract](./listing-contract.md)                     | create any list endpoint                          |
 | [Auth](./auth.md)                                             | protect a route or read who is calling            |
 | [Database and migrations](./database-and-migrations.md)       | create or change a table                          |
+| [Logging and the terminal](./logging.md)                      | log something, or add a step to the boot          |
 | [Testing](./testing.md)                                       | write any test                                    |
