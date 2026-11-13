@@ -9,7 +9,7 @@ export class UpdateTaskDto {
   @MaxLength(1000)
   title?: string
 
-  @ApiPropertyOptional({ example: 'Architecture and patterns.', nullable: true })
+  @ApiPropertyOptional({ type: String, example: 'Architecture and patterns.', nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(5000)

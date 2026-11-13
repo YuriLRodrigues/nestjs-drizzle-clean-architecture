@@ -11,7 +11,7 @@ export class CreateTaskDto {
   @MaxLength(1000)
   title: string
 
-  @ApiPropertyOptional({ example: 'Explain how to run the project.', nullable: true })
+  @ApiPropertyOptional({ type: String, example: 'Explain how to run the project.', nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(5000)

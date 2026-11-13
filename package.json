@@ -27,6 +27,7 @@
     "test:e2e": "vitest run --project e2e",
     "test:watch": "vitest --project unit --project integration",
     "test:cov": "vitest run --project unit --project integration --coverage",
+    "docs:openapi": "node tooling/export-openapi.mjs",
     "docs:assets": "node tooling/diagrams.mjs && node tooling/capture-terminal.mjs",
     "prepare": "husky"
   },
